@@ -1,0 +1,34 @@
+Create trigger salary_diff
+before insert or delete or update on table name
+for each row
+declare
+salarydiff number;
+begin
+salarydiff := :new.salary - :old.salary;
+dbms_output.put_line('old salary' || :old.salary);
+dbms_output.put_line('new salary' || :new.salary);
+end;
+/
+
+
+-----
+
+set serveroutput on;
+declare 
+cursor emp is
+select salary,e_name from emp;
+salary number(10,2);
+e_name varchar(30);
+begin
+open emp
+is emp%isopen then
+dbms_output.put_line('cursor is open');
+end if;
+loop
+fetch emp into salary,e_name;
+exit when emp%notfound;
+dbms_output.put_line(salary || ' ' | e_name);
+end loop;
+close emp;
+end;
+/
