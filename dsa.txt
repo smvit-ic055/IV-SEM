@@ -1,3 +1,84 @@
+1. create table
+insert values
+
+start transaction;
+savepoint s;
+inser value
+select * from emp;
+rollback to s;
+select * from emp;
+alter table emp add constraint primary key (empno)
+alter table emp mpdify ename varchar(50) not null,modify job varchar(50) not null
+
+2.create tavle
+alter table emp add column comission decimal(10,2)'
+insert 5 records
+update emp set job = 'supervisor' where empno = 105;
+alter table emp rename column manager_no to mgr;
+delete from emp where empno=105
+
+
+3. create table 
+insert value
+
+select count(ename) as num_emp from emp
+select max(age) as max_age from emp
+select min(age) as min_age from emp
+select salary from emp order by salary asc;
+select salary, count(*) as num_emp from emp group by salary
+
+4. create table
+
+trigger
+
+update customer set salary = 6000 where id = 7;
+
+set serveroutput on;
+
+insert/modify
+
+5. Create table 
+insert values
+
+
+6. create table O_rollcall(roll int, name varchar);
+ create table N_rollcall(roll int, name varchar);
+
+insert into O_rollcall values
+insert into N_rollcall values
+set autoprint on;
+set serveroutput on;
+set verify off;
+declare 
+cursor cu1 is
+select Roll,Name from N_RollCal;
+cursor cu2 is
+select Roll from O_RollCal;
+rno int;
+nm varchar(20); 
+rno2 int;
+begin
+open cu1; 
+open cu2;
+loop
+fetch cu1 into rno,nm; 
+fetch cu2 into rno2;
+exit when cu1%found = false; 
+if rno2 <> rno then
+insert into O_RollCal values(rno,nm); 
+end if;
+end loop; 
+close cu1; 
+close cu2; 
+end;
+/
+
+SQL>PL/SQL procedure successfully completed.
+SQL> select * from N_Rollcal;
+
+
+4. 
+
 Create trigger salary_diff
 before insert or delete or update on table name
 for each row
@@ -12,6 +93,7 @@ end;
 
 
 -----
+5.
 
 set serveroutput on;
 declare 
